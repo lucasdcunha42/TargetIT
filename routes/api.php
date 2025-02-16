@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\V1\AdminController;
+use App\Http\Controllers\Api\V1\AuthController;
+use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->group(function () {
+
+    //Admin Routes
+    Route::post("register",[AdminController::class, "store"])->middleware(['auth:api', 'role:admin']);
+    Route::patch("user/restore", [UserController::class, "restoreUser"]);
+
+
+    //Auth Routes
+    Route::post("login",[AuthController::class, "login"]);
+
+    Route::group(['middleware' => 'auth:api'], function(){
+        Route::get("profile",[UserController::class, "profile"]);
+        Route::get("refresh",[UserController::class, "refreshToken"]);
+        Route::get("logout",[UserController::class, "logout"]);
+
+        Route::put( "user/update",[UserController::class, "updateUser"]);
+        Route::delete("user/delete", [UserController::class, "deleteUser"]);
+    });
+
 });
+
+
+
