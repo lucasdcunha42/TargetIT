@@ -31,6 +31,8 @@ class CreateUserCommand extends Command
         $user['email'] = $this->ask('What is your email?');
         $user['password'] = $this->secret('What is your password?');
         $user['password_confirmation'] = $this->secret('Please confirm your password');
+        $user['phone'] = $this->ask('What is your phone?');
+        $user['cpf'] = $this->ask('What is your CPF?');
         $user['role'] = $this->choice('What is your role?', ['admin', 'user'], 1);
 
         $validator = validator($user, [
