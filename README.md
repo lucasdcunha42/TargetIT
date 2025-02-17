@@ -60,6 +60,10 @@ php artisan serve
 ```
 A aplicação estará disponível em `http://localhost:8000`.
 
+## 9. Acessar a Documentação da API
+A documentação da API está disponível em:
+[http://127.0.0.1:8000/docs#introduction](http://127.0.0.1:8000/docs#introduction)
+
 ---
 Com esses passos, seu ambiente estará pronto para desenvolvimento. Caso tenha dúvidas, consulte a documentação do Laravel ou verifique possíveis erros no terminal.
 
