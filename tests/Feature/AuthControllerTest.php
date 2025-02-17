@@ -108,7 +108,7 @@ class AuthControllerTest extends TestCase
 
         // Verificar a mensagem de erro
         $response->assertJson([
-            'message' => 'Credenciais inválidas!'
+            'message' => 'Invalid credentials!'
         ]);
     }
     /** @test */
@@ -152,7 +152,7 @@ class AuthControllerTest extends TestCase
 
         // Verificar a mensagem de erro
         $response->assertJson([
-            'message' => 'Credenciais inválidas!'
+            'message' => 'Invalid credentials!'
         ]);
     }
 
