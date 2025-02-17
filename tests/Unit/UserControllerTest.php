@@ -23,7 +23,7 @@ class UserControllerTest extends TestCase
     }
 
     /**
-     * Fechamento dos mocks após cada teste.
+     * Close mocks after each test.
      */
     protected function tearDown(): void
     {
@@ -32,11 +32,11 @@ class UserControllerTest extends TestCase
     }
 
     /**
-     * Testa o método show() para verificar se os dados do usuário são retornados corretamente.
+     * Tests the show() method to verify if user data is returned correctly.
      */
     public function testShowReturnsUserData()
     {
-        // Cria um objeto usuário com dados fictícios.
+        // Creates a user object with fictitious data.
         $user = new User([
             'id'         => 1,
             'name'       => 'John Doe',
@@ -53,7 +53,7 @@ class UserControllerTest extends TestCase
 
         $this->assertEquals(200, $response->getStatusCode());
 
-        // Decodifica a resposta JSON.
+        // Decodes the JSON response.
         $data = $response->getData(true);
         $this->assertEquals('success', $data['status']);
         $this->assertEquals('Profile Data', $data['message']);
@@ -61,11 +61,11 @@ class UserControllerTest extends TestCase
     }
 
     /**
-     * Testa o método store() para criação de um usuário com sucesso.
+     * Tests the store() method for successful user creation.
      */
     public function testStoreCreatesUserSuccessfully()
     {
-        // Dados validados simulados para criação
+        // Simulated validated data for creation
         $validatedData = [
             'name'     => 'Jane Doe',
             'email'    => 'jane@example.com',
@@ -74,7 +74,7 @@ class UserControllerTest extends TestCase
             'cpf'      => '09876543210',
         ];
 
-        // Usuário autenticado (dummy)
+        // Authenticated user (dummy)
         $authenticatedUser = User::factory()->create([
             'name' => 'Auth User',
             'email' => 'auth@example.com',
@@ -83,19 +83,19 @@ class UserControllerTest extends TestCase
             'cpf' => '12345678901'
         ]);
 
-        // Mock do request
+        // Mock request
         $request = Mockery::mock(CreateUserRequest::class);
         $request->shouldReceive('validated')
                 ->once()
                 ->andReturn($validatedData);
 
-        // Mock parcial do controller
+        // Partial mock of the controller
         $controller = Mockery::mock(UserController::class)->makePartial();
         $controller->shouldReceive('authorize')
                    ->once()
                    ->with('store', \Mockery::type(User::class));
 
-        // Executa o método
+        // Executes the method
         $response = $controller->store($request, $authenticatedUser);
 
         // Assertions
@@ -105,13 +105,13 @@ class UserControllerTest extends TestCase
         $this->assertEquals('success', $data['status']);
         $this->assertEquals('User Created Successfully!', $data['message']);
 
-        // Verifica se os dados do usuário criado estão corretos
+        // Verifies if the created user data is correct
         $this->assertEquals($validatedData['name'], $data['user']['name']);
         $this->assertEquals($validatedData['email'], $data['user']['email']);
         $this->assertEquals($validatedData['phone'], $data['user']['phone']);
         $this->assertEquals($validatedData['cpf'], $data['user']['cpf']);
 
-        // Verifica se o usuário foi realmente criado no banco
+        // Verifies if the user was actually created in the database
         $this->assertDatabaseHas('users', [
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
@@ -121,11 +121,11 @@ class UserControllerTest extends TestCase
     }
 
     /**
-     * Testa o método update() para verificar se os dados do usuário são atualizados corretamente.
+     * Tests the update() method to verify if user data is updated correctly.
      */
     public function testUpdateUserSuccessfully()
     {
-        // Dados validados simulados para atualização.
+        // Simulated validated data for update.
         $validatedData = [
             'name'  => 'Updated Name',
             'email' => 'updated@example.com',
@@ -133,7 +133,7 @@ class UserControllerTest extends TestCase
             'cpf'   => '11223344556',
         ];
 
-        // Cria um mock parcial do usuário para simular os métodos update() e load().
+        // Creates a partial mock of the user to simulate the update() and load() methods.
         $user = Mockery::mock(User::class)->makePartial();
         $user->shouldReceive('update')
              ->once()
@@ -144,18 +144,18 @@ class UserControllerTest extends TestCase
              ->with('address')
              ->andReturnSelf();
 
-        // Define alguns atributos fictícios.
+        // Defines some fictitious attributes.
         $user->id    = 1;
         $user->name  = 'Old Name';
         $user->email = 'old@example.com';
 
-        // Cria um partial mock do controller para simular a autorização.
+        // Creates a partial mock of the controller to simulate authorization.
         $controller = Mockery::mock(UserController::class)->makePartial();
         $controller->shouldReceive('authorize')
                    ->once()
                    ->with('update', $user);
 
-        // Cria um stub para o UpdateUserRequest.
+        // Creates a stub for the UpdateUserRequest.
         $request = Mockery::mock(UpdateUserRequest::class);
         $request->shouldReceive('validated')
                 ->once()
@@ -172,18 +172,18 @@ class UserControllerTest extends TestCase
     }
 
     /**
-     * Testa o método destroy() para verificar se o usuário é excluído (soft delete) corretamente.
+     * Tests the destroy() method to verify if the user is deleted (soft delete) correctly.
      */
     public function testDestroyUserSuccessfully()
     {
-        // Cria um mock parcial do usuário, simulando o método delete().
+        // Creates a partial mock of the user, simulating the delete() method.
         $user = Mockery::mock(User::class)->makePartial();
         $user->shouldReceive('delete')
              ->once()
              ->andReturn(true);
         $user->id = 1;
 
-        // Cria um partial mock do controller para simular a autorização.
+        // Creates a partial mock of the controller to simulate authorization.
         $controller = Mockery::mock(UserController::class)->makePartial();
         $controller->shouldReceive('authorize')
                    ->once()
