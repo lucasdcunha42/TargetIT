@@ -21,8 +21,9 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function store(CreateUserRequest $request)
+    public function store(CreateUserRequest $request, User $user)
     {
+        $this->authorize('store', $user);
 
         $user = User::create($request->validated());
 
@@ -36,6 +37,7 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, User $user)
     {
+        $this->authorize('update', $user);
 
         // Atualiza apenas os campos enviados
         $user->update($request->validated());
@@ -49,6 +51,9 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+
+        $this->authorize('delete', $user);
+
         if (!$user) {
             return response()->json([
                 "status" => "error",
