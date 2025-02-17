@@ -16,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * @group Autenticação
+ *
+ * APIs para autenticação de usuários
+ */
+
 Route::prefix('v1')->group(function () {
 
     Route::post('/login', [AuthController::class, 'login']);
@@ -26,7 +32,6 @@ Route::prefix('v1')->group(function () {
         Route::get('/users/{user}', [UserController::class, 'show']);
         Route::put('/users/{user}', [UserController::class, 'update']);
         Route::delete('/users/{user}', [UserController::class, 'destroy']);
-        Route::post('/users/{user}/assign-role', [UserController::class, 'assignRole']);
 
         // Endereços
         Route::post('/users/{user}/addresses', [AddressController::class, 'store']);
