@@ -8,18 +8,18 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 
 /**
- * @group Gerenciamento de Usuários
+ * @group User Management
  *
- * APIs para gerenciar usuários no sistema
+ * APIs for managing users in the system
  */
 class UserController extends Controller
 {
     /**
-     * Exibir Usuário
+     * Show User
      *
-     * Retorna os dados de um usuário específico.
+     * Returns the data of a specific user.
      *
-     * @urlParam user integer required ID do usuário. Example: 1
+     * @urlParam user integer required User ID. Example: 1
      *
      * @response 200 {
      *    "status": "success",
@@ -34,10 +34,10 @@ class UserController extends Controller
      *        "updated_at": "2024-02-17T10:00:00.000000Z"
      *    }
      * }
-     * 
+     *
      * @response 404 {
      *    "status": "error",
-     *    "message": "Usuário não encontrado!"
+     *    "message": "User not found!"
      * }
      */
     public function show(User $user)
@@ -50,15 +50,15 @@ class UserController extends Controller
     }
 
     /**
-     * Criar Usuário
+     * Create User
      *
-     * Cria um novo usuário no sistema.
+     * Creates a new user in the system.
      *
-     * @bodyParam name string required Nome do usuário. Example: John Doe
-     * @bodyParam email string required Email do usuário. Example: john@example.com
-     * @bodyParam password string required Senha do usuário (mínimo 8 caracteres). Example: password123
-     * @bodyParam phone string required Telefone do usuário. Example: 11999999999
-     * @bodyParam cpf string required CPF do usuário. Example: 12345678900
+     * @bodyParam name string required User's name. Example: John Doe
+     * @bodyParam email string required User's email. Example: john@example.com
+     * @bodyParam password string required User's password (minimum 8 characters). Example: password123
+     * @bodyParam phone string required User's phone. Example: 11999999999
+     * @bodyParam cpf string required User's CPF. Example: 12345678900
      *
      * @response 201 {
      *    "status": "success",
@@ -73,16 +73,16 @@ class UserController extends Controller
      *        "updated_at": "2024-02-17T10:00:00.000000Z"
      *    }
      * }
-     * 
+     *
      * @response 422 {
      *    "message": "The given data was invalid.",
      *    "errors": {
      *        "email": [
-     *            "O campo email já está sendo utilizado."
+     *            "The email field is already in use."
      *        ]
      *    }
      * }
-     * 
+     *
      * @response 403 {
      *    "message": "This action is unauthorized."
      * }
@@ -101,15 +101,15 @@ class UserController extends Controller
     }
 
     /**
-     * Atualizar Usuário
+     * Update User
      *
-     * Atualiza os dados de um usuário existente.
+     * Updates the data of an existing user.
      *
-     * @urlParam user integer required ID do usuário. Example: 1
-     * @bodyParam name string optional Nome do usuário. Example: John Doe
-     * @bodyParam email string optional Email do usuário. Example: john@example.com
-     * @bodyParam phone string optional Telefone do usuário. Example: 11999999999
-     * @bodyParam cpf string optional CPF do usuário. Example: 12345678900
+     * @urlParam user integer required User ID. Example: 1
+     * @bodyParam name string optional User's name. Example: John Doe
+     * @bodyParam email string optional User's email. Example: john@example.com
+     * @bodyParam phone string optional User's phone. Example: 11999999999
+     * @bodyParam cpf string optional User's CPF. Example: 12345678900
      *
      * @response 200 {
      *    "status": "success",
@@ -124,25 +124,25 @@ class UserController extends Controller
      *        "address": {
      *            "id": 1,
      *            "user_id": 1,
-     *            "street": "Rua Exemplo",
+     *            "street": "Example Street",
      *            "number": "123",
-     *            "complement": "Apto 45",
-     *            "neighborhood": "Centro",
+     *            "complement": "Apt 45",
+     *            "neighborhood": "Downtown",
      *            "city": "São Paulo",
      *            "state": "SP",
      *            "zipcode": "01001000"
      *        }
      *    },
-     *    "message": "Usuário atualizado com sucesso!"
+     *    "message": "User updated successfully!"
      * }
-     * 
+     *
      * @response 403 {
      *    "message": "This action is unauthorized."
      * }
-     * 
+     *
      * @response 404 {
      *    "status": "error",
-     *    "message": "Usuário não encontrado!"
+     *    "message": "User not found!"
      * }
      */
     public function update(UpdateUserRequest $request, User $user)
@@ -154,29 +154,29 @@ class UserController extends Controller
         return response()->json([
             "status"  => "success",
             "data"    => $user->load('address'),
-            "message" => "Usuário atualizado com sucesso!"
+            "message" => "User updated successfully!"
         ], 200);
     }
 
     /**
-     * Remover Usuário
+     * Remove User
      *
-     * Remove um usuário do sistema (soft delete).
+     * Removes a user from the system (soft delete).
      *
-     * @urlParam user integer required ID do usuário. Example: 1
+     * @urlParam user integer required User ID. Example: 1
      *
      * @response 200 {
      *    "status": "success",
-     *    "message": "Usuário deletado com sucesso!"
+     *    "message": "User deleted successfully!"
      * }
-     * 
+     *
      * @response 403 {
      *    "message": "This action is unauthorized."
      * }
-     * 
+     *
      * @response 404 {
      *    "status": "error",
-     *    "message": "Usuário não encontrado!"
+     *    "message": "User not found!"
      * }
      */
     public function destroy(User $user)
@@ -186,7 +186,7 @@ class UserController extends Controller
         if (!$user) {
             return response()->json([
                 "status" => "error",
-                "message" => "Usuário não encontrado!"
+                "message" => "User not found!"
             ], 404);
         }
 
@@ -194,7 +194,7 @@ class UserController extends Controller
 
         return response()->json([
             "status" => "success",
-            "message" => "Usuário deletado com sucesso!"
+            "message" => "User deleted successfully!"
         ], 200);
     }
 }
