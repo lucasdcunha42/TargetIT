@@ -27,13 +27,12 @@ Route::prefix('v1')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
 
     Route::middleware('auth:api')->group(function () {
-        // Usuários
+
         Route::post('/users', [UserController::class, 'store']);
         Route::get('/users/{user}', [UserController::class, 'show']);
         Route::put('/users/{user}', [UserController::class, 'update']);
         Route::delete('/users/{user}', [UserController::class, 'destroy']);
 
-        // Endereços
         Route::post('/users/{user}/addresses', [AddressController::class, 'store']);
     });
 });
