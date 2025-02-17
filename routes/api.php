@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\AddressController;
 use App\Http\Controllers\Api\V1\AuthController;
 use App\Http\Controllers\Api\V1\UserController;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +30,7 @@ Route::prefix('v1')->group(function () {
 
         // Endereços
         Route::post('/users/{user}/addresses', [AddressController::class, 'store']);
-        Route::get('/users/{user}/addresses', [AddressController::class, 'index']);
     });
-
 });
 
 

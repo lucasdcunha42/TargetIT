@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Api\V1;
+namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -69,7 +69,7 @@ class AuthControllerTest extends TestCase
         $this->assertEquals('admin', $user->role);
     }
 
-
+    /** @test */
     public function usuario_regular_pode_fazer_login_com_credenciais_validas()
     {
         // Fazer requisição POST para o endpoint de login
@@ -94,7 +94,7 @@ class AuthControllerTest extends TestCase
         $this->assertEquals('user@example.com', $user->email);
         $this->assertEquals('user', $user->role);
     }
-
+    /** @test */
     public function login_falha_com_credenciais_invalidas()
     {
         // Tentar login com senha errada
@@ -111,7 +111,7 @@ class AuthControllerTest extends TestCase
             'message' => 'Credenciais inválidas!'
         ]);
     }
-
+    /** @test */
     public function login_requer_email_e_senha()
     {
         // Tentar login sem informar email e senha
@@ -123,7 +123,7 @@ class AuthControllerTest extends TestCase
         // Verificar se contém erros de validação para email e senha
         $response->assertJsonValidationErrors(['email', 'password']);
     }
-
+    /** @test */
     public function login_requer_email_valido()
     {
         // Tentar login com email em formato inválido
@@ -138,7 +138,7 @@ class AuthControllerTest extends TestCase
         // Verificar se contém erro de validação para email
         $response->assertJsonValidationErrors(['email']);
     }
-
+    /** @test */
     public function usuario_nao_encontrado_retorna_erro()
     {
         // Tentar login com email que não existe no sistema

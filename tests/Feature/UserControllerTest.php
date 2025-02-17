@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Api\V1;
+namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -71,7 +71,6 @@ class UserControllerTest extends TestCase
             'role' => 'user'
         ]);
     }
-
 
     public function test_cannot_create_user_without_authentication()
     {
