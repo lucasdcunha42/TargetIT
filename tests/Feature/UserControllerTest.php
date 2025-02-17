@@ -19,7 +19,6 @@ class UserControllerTest extends TestCase
     {
         parent::setUp();
 
-        // Criando usuário admin
         $this->adminUser = User::factory()->create([
             'role' => 'admin',
             'email' => 'admin@example.com',
@@ -27,7 +26,6 @@ class UserControllerTest extends TestCase
             'phone' => '(11) 98765-4321'
         ]);
 
-        // Criando usuário regular
         $this->regularUser = User::factory()->create([
             'role' => 'user',
             'email' => 'user@example.com',
@@ -35,7 +33,6 @@ class UserControllerTest extends TestCase
             'phone' => '(11) 91234-5678'
         ]);
 
-        // Gerando token JWT para o admin
         $this->token = JWTAuth::fromUser($this->adminUser);
     }
 
@@ -92,7 +89,7 @@ class UserControllerTest extends TestCase
     {
         $userData = [
             'name' => 'Duplicate Email',
-            'email' => $this->regularUser->email, // Usando email existente
+            'email' => $this->regularUser->email, // Using existing email
             'phone' => '(11) 92345-6789',
             'cpf' => '44455566677',
             'password' => 'password123',
@@ -173,7 +170,7 @@ class UserControllerTest extends TestCase
 
         $response->assertStatus(200)
                  ->assertJsonPath('status', 'success')
-                 ->assertJsonPath('message', 'Usuário atualizado com sucesso!')
+                 ->assertJsonPath('message', 'User updated successfully!')
                  ->assertJsonStructure([
                      'status',
                      'data' => [
@@ -212,7 +209,7 @@ class UserControllerTest extends TestCase
     public function test_cannot_update_email_to_existing_one()
     {
         $updatedData = [
-            'email' => $this->adminUser->email, // Tentando usar um email que já existe
+            'email' => $this->adminUser->email, // Trying to use an existing email
         ];
 
         $response = $this->withHeaders([
@@ -226,7 +223,7 @@ class UserControllerTest extends TestCase
     public function test_cannot_update_cpf_to_existing_one()
     {
         $updatedData = [
-            'cpf' => $this->adminUser->cpf, // Tentando usar um CPF que já existe
+            'cpf' => $this->adminUser->cpf, // Trying to use an existing CPF
         ];
 
         $response = $this->withHeaders([
@@ -245,9 +242,9 @@ class UserControllerTest extends TestCase
 
         $response->assertStatus(200)
                  ->assertJsonPath('status', 'success')
-                 ->assertJsonPath('message', 'Usuário deletado com sucesso!');
+                 ->assertJsonPath('message', 'User deleted successfully!');
 
-        // Verificar soft delete
+        // Verify soft delete
         $this->assertSoftDeleted('users', [
             'id' => $this->regularUser->id,
         ]);
