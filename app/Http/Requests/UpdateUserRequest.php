@@ -11,7 +11,8 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check() &&
+               (auth()->user()->isAdmin() || auth()->id() == $this->user->id);
     }
 
     /**
@@ -22,15 +23,12 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'          => 'nullable|string|max:255',
-            'email'         => 'nullable|email|unique:users,email,' . auth()->id(),
-            'phone'         => 'nullable|string|max:15',
-            'cpf'           => 'nullable|string|max:14',
-            'logradouro'    => 'nullable|string|max:255',
-            'numero'        => 'nullable|string|max:10',
-            'bairro'        => 'nullable|string|max:255',
-            'complemento'   => 'nullable|string|max:255',
-            'cep'           => 'nullable|string|max:10',
+            'name'          => 'sometimes|string|max:255',
+            'email'         => 'sometimes|email|unique:users,email,' . auth()->id(),
+            'phone'         => 'sometimes|string|max:15',
+            'cpf'           => 'sometimes|string|max:14',
+            'password'      => 'nullable|string|min:6',
+
         ];
     }
 

@@ -18,21 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
-    //Admin Routes
-    Route::post("register",[AdminController::class, "store"])->middleware(['auth:api', 'role:admin']);
-    Route::patch("user/restore", [UserController::class, "restoreUser"]);
+    Route::post('/login', [AuthController::class, 'login']);
 
+    Route::middleware('auth:api')->group(function () {
+        // Usuários
+        Route::post('/users', [UserController::class, 'store']);
+        Route::get('/users/{user}', [UserController::class, 'show']);
+        Route::put('/users/{user}', [UserController::class, 'update']);
+        Route::delete('/users/{user}', [UserController::class, 'destroy']);
+        Route::post('/users/{user}/assign-role', [UserController::class, 'assignRole']);
 
-    //Auth Routes
-    Route::post("login",[AuthController::class, "login"]);
-
-    Route::group(['middleware' => 'auth:api'], function(){
-        Route::get("profile",[UserController::class, "profile"]);
-        Route::get("refresh",[UserController::class, "refreshToken"]);
-        Route::get("logout",[UserController::class, "logout"]);
-
-        Route::put( "user/update",[UserController::class, "updateUser"]);
-        Route::delete("user/delete", [UserController::class, "deleteUser"]);
+        // Endereços
+        Route::post('/users/{user}/addresses', [AddressController::class, 'store']);
+        Route::get('/users/{user}/addresses', [AddressController::class, 'index']);
     });
 
 });

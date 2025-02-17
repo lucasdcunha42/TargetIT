@@ -12,82 +12,43 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
-    //API de Perfil (GET)
-    public function profile()
+    public function show(User $user)
     {
-        $userData = auth()->user()->load('address');
-
         return response()->json([
             "status" => "success",
             "message" => "Profile Data",
-            "user" => $userData
+            "user" => $user
         ], 200);
     }
 
-    //API de Atualização de Token (GET)
-    public function refreshToken()
+    public function store(CreateUserRequest $request)
     {
-        $newToken = auth()->refresh();
+
+        $user = User::create($request->validated());
 
         return response()->json([
             "status" => "success",
-            "message" => "New access token",
-            "token" => $newToken
-        ], 200);
-
+            "message" => "User Created Successfully!",
+            "user" => $user
+        ], 201);
     }
 
-    //API de Logout (GET)
-    public function logout()
-    {
-        auth()->logout();
 
-        return response()->json([
-            "status" => "success",
-            "message" => "Logout realizado com sucesso!"
-        ], 200);
-    }
-
-    public function updateUser(UpdateUserRequest $request)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        // Obtendo o usuário autenticado
-        $user = auth()->user();
 
         // Atualiza apenas os campos enviados
         $user->update($request->validated());
 
-        // Atualizando ou criando o endereço
-        $address = $user->address;
-        if ($address) {
-            // Atualiza o endereço existente
-            $address->update([
-                'logradouro'  => $request->has('logradouro') ? $request->logradouro : $address->logradouro,
-                'numero'      => $request->has('numero') ? $request->numero : $address->numero,
-                'bairro'      => $request->has('bairro') ? $request->bairro : $address->bairro,
-                'complemento' => $request->has('complemento') ? $request->complemento : $address->complemento,
-                'cep'         => $request->has('cep') ? $request->cep : $address->cep,
-            ]);
-        } else {
-            // Se o endereço não existir, cria um novo
-            $address = $user->address()->create([
-                'logradouro'  => $request->logradouro,
-                'numero'      => $request->numero,
-                'bairro'      => $request->bairro,
-                'complemento' => $request->complemento,
-                'cep'         => $request->cep,
-            ]);
-        }
-
         return response()->json([
             "status"  => "success",
             "data"    => $user->load('address'),
-            "message" => "Usuário e endereço atualizados com sucesso!"
+            "message" => "Usuário atualizado com sucesso!"
         ], 200);
     }
 
-    public function deleteUser()
+    public function delete(User $user)
     {
-        $user = auth()->user(); // Obtém o usuário autenticado
 
         if (!$user) {
             return response()->json([
@@ -96,7 +57,7 @@ class UserController extends Controller
             ], 404);
         }
 
-        $user->delete(); // Soft delete
+        $user->delete(); // Softdelete
 
         return response()->json([
             "status" => "success",

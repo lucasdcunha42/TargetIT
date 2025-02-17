@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\RestoreUserRequest;
+use App\Http\Resources\UserRestoreResource;
 use App\Models\User;
 
 class AdminController extends Controller
@@ -23,51 +24,17 @@ class AdminController extends Controller
 
     public function restoreUser(RestoreUserRequest $request)
     {
-        
-
-        // Buscar usuário pelo email incluindo os registros deletados
-        $user = User::withTrashed()
+        $user = User::onlyTrashed()
             ->where('email', $request->email)
-            ->first();
+            ->firstOrFail();
 
-        // Verificar se usuário existe e está realmente deletado
-        if (!$user) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Usuário não encontrado!'
-            ], 404);
-        }
+        $user->restore();
 
-        if (!$user->trashed()) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Este usuário já está ativo!'
-            ], 400);
-        }
-
-        try {
-            // Restaurar usuário
-            $user->restore();
-
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Usuário restaurado com sucesso!',
-                'data' => [
-                    'user' => [
-                        'id' => $user->id,
-                        'email' => $user->email,
-                        'name' => $user->name,
-                        'restored_at' => now()
-                    ]
-                ]
-            ], 200);
-
-        } catch (\Exception $e) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Erro ao restaurar usuário!',
-                'error' => $e->getMessage()
-            ], 500);
-        }
+        return response()->json([
+            'message' => 'User restored successfully',
+            'data' => new UserRestoreResource($user)
+        ], 200);
     }
+
+
 }

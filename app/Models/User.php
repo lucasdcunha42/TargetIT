@@ -20,10 +20,7 @@ class User extends Authenticatable implements JWTSubject
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
+        'name', 'email', 'password', 'role', 'phone', 'cpf'
     ];
 
     /**
@@ -59,5 +56,10 @@ class User extends Authenticatable implements JWTSubject
     public function address()
     {
         return $this->hasOne(Address::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 }

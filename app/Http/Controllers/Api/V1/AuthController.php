@@ -23,6 +23,27 @@ class AuthController extends Controller
                 "message" => "Credenciais inválidas!"
             ], 401);
         }
+    }
 
+    public function refreshToken()
+    {
+        $newToken = auth()->refresh();
+
+        return response()->json([
+            "status" => "success",
+            "message" => "New access token",
+            "token" => $newToken
+        ], 200);
+
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+
+        return response()->json([
+            "status" => "success",
+            "message" => "Logout realizado com sucesso!"
+        ], 200);
     }
 }
