@@ -25,8 +25,8 @@ class CreateUserRequest extends FormRequest
             'name'      => 'required|string|max:255',
             'email'     => 'required|email|unique:users',
             'password'  => 'required|min:6|confirmed',
-            'phone'     => 'string|max:20',
-            'cpf'       => 'string|unique:users|max:14'
+            'phone'     => 'sometimes|max:20',
+            'cpf'       => 'sometimes|unique:users|max:14'
         ];
     }
     public function messages(): array
@@ -47,7 +47,6 @@ class CreateUserRequest extends FormRequest
             'phone.max' => 'The phone may not be greater than 20 characters.',
 
             'cpf.string' => 'The CPF must be a valid string.',
-            'cpf.unique' => 'The CPF has already been taken.',
             'cpf.max' => 'The CPF may not be greater than 14 characters.',
         ];
     }
