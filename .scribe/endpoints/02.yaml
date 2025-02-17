@@ -1,0 +1,182 @@
+name: Endereços
+description: |-
+
+  APIs para gerenciamento de endereços dos usuários
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: 'api/v1/users/{user_id}/addresses'
+    metadata:
+      groupName: Endereços
+      groupDescription: |-
+
+        APIs para gerenciamento de endereços dos usuários
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Criar endereço'
+      description: |-
+        Adiciona um novo endereço para um usuário.
+        Usuários podem adicionar endereços a suas próprias contas.
+        Administradores podem adicionar endereços a qualquer usuário.
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      user:
+        name: user
+        description: 'ID do usuário.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      user_id: 14
+      user: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      street:
+        name: street
+        description: 'Nome da rua.'
+        required: true
+        example: 'Rua das Flores'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      number:
+        name: number
+        description: Número.
+        required: true
+        example: '123'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      district:
+        name: district
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: eyacoujouapnprrcnzppprnrw
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      complement:
+        name: complement
+        description: Complemento.
+        required: false
+        example: 'Apto 45'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: true
+        custom: []
+      zip_code:
+        name: zip_code
+        description: CEP.
+        required: true
+        example: 01234-567
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      neighborhood:
+        name: neighborhood
+        description: Bairro.
+        required: true
+        example: Centro
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      city:
+        name: city
+        description: Cidade.
+        required: true
+        example: 'São Paulo'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      state:
+        name: state
+        description: Estado.
+        required: true
+        example: SP
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      street: 'Rua das Flores'
+      number: '123'
+      district: eyacoujouapnprrcnzppprnrw
+      complement: 'Apto 45'
+      zip_code: 01234-567
+      neighborhood: Centro
+      city: 'São Paulo'
+      state: SP
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+            "message": "Endereço criado com sucesso",
+            "data": {
+              "id": 1,
+              "street": "Rua das Flores",
+              "number": "123",
+              "complement": "Apto 45",
+              "neighborhood": "Centro",
+              "city": "São Paulo",
+              "state": "SP",
+              "zip_code": "01234-567"
+            }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+            "message": "Não autorizado. Você só pode adicionar endereços à sua própria conta."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer Z6cD6hb81geVvaP3k4fa5Ed'
+    controller: null
+    method: null
+    route: null
+    custom: []

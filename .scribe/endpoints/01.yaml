@@ -1,0 +1,458 @@
+name: 'Gerenciamento de Usuários'
+description: |-
+
+  APIs para gerenciar usuários no sistema
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/users
+    metadata:
+      groupName: 'Gerenciamento de Usuários'
+      groupDescription: |-
+
+        APIs para gerenciar usuários no sistema
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Criar Usuário'
+      description: 'Cria um novo usuário no sistema.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Nome do usuário.'
+        required: true
+        example: 'John Doe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'Email do usuário.'
+        required: true
+        example: john@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Senha do usuário (mínimo 8 caracteres).'
+        required: true
+        example: password123
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      phone:
+        name: phone
+        description: 'Telefone do usuário.'
+        required: true
+        example: '11999999999'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      cpf:
+        name: cpf
+        description: 'CPF do usuário.'
+        required: true
+        example: '12345678900'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      name: 'John Doe'
+      email: john@example.com
+      password: password123
+      phone: '11999999999'
+      cpf: '12345678900'
+    fileParameters: []
+    responses:
+      -
+        status: 201
+        content: |-
+          {
+             "status": "success",
+             "message": "User Created Successfully!",
+             "user": {
+                 "id": 1,
+                 "name": "John Doe",
+                 "email": "john@example.com",
+                 "phone": "11999999999",
+                 "cpf": "12345678900",
+                 "created_at": "2024-02-17T10:00:00.000000Z",
+                 "updated_at": "2024-02-17T10:00:00.000000Z"
+             }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+             "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+             "message": "The given data was invalid.",
+             "errors": {
+                 "email": [
+                     "O campo email já está sendo utilizado."
+                 ]
+             }
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/users/{user_id}'
+    metadata:
+      groupName: 'Gerenciamento de Usuários'
+      groupDescription: |-
+
+        APIs para gerenciar usuários no sistema
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Exibir Usuário'
+      description: 'Retorna os dados de um usuário específico.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      user:
+        name: user
+        description: 'ID do usuário.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      user_id: 8
+      user: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "status": "success",
+             "message": "Profile Data",
+             "user": {
+                 "id": 1,
+                 "name": "John Doe",
+                 "email": "john@example.com",
+                 "phone": "11999999999",
+                 "cpf": "12345678900",
+                 "created_at": "2024-02-17T10:00:00.000000Z",
+                 "updated_at": "2024-02-17T10:00:00.000000Z"
+             }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+             "status": "error",
+             "message": "Usuário não encontrado!"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/v1/users/{user_id}'
+    metadata:
+      groupName: 'Gerenciamento de Usuários'
+      groupDescription: |-
+
+        APIs para gerenciar usuários no sistema
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Atualizar Usuário'
+      description: 'Atualiza os dados de um usuário existente.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 14
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      user:
+        name: user
+        description: 'ID do usuário.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      user_id: 14
+      user: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'optional Nome do usuário.'
+        required: false
+        example: 'John Doe'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      email:
+        name: email
+        description: 'optional Email do usuário.'
+        required: false
+        example: john@example.com
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      phone:
+        name: phone
+        description: 'optional Telefone do usuário.'
+        required: false
+        example: '11999999999'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      cpf:
+        name: cpf
+        description: 'optional CPF do usuário.'
+        required: false
+        example: '12345678900'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: 'Must be at least 6 characters.'
+        required: false
+        example: 'qT|P|v?s^ul'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: 'John Doe'
+      email: john@example.com
+      phone: '11999999999'
+      cpf: '12345678900'
+      password: 'qT|P|v?s^ul'
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "status": "success",
+             "data": {
+                 "id": 1,
+                 "name": "John Doe",
+                 "email": "john@example.com",
+                 "phone": "11999999999",
+                 "cpf": "12345678900",
+                 "created_at": "2024-02-17T10:00:00.000000Z",
+                 "updated_at": "2024-02-17T10:00:00.000000Z",
+                 "address": {
+                     "id": 1,
+                     "user_id": 1,
+                     "street": "Rua Exemplo",
+                     "number": "123",
+                     "complement": "Apto 45",
+                     "neighborhood": "Centro",
+                     "city": "São Paulo",
+                     "state": "SP",
+                     "zipcode": "01001000"
+                 }
+             },
+             "message": "Usuário atualizado com sucesso!"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+             "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+             "status": "error",
+             "message": "Usuário não encontrado!"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/users/{user_id}'
+    metadata:
+      groupName: 'Gerenciamento de Usuários'
+      groupDescription: |-
+
+        APIs para gerenciar usuários no sistema
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remover Usuário'
+      description: 'Remove um usuário do sistema (soft delete).'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      user_id:
+        name: user_id
+        description: 'The ID of the user.'
+        required: true
+        example: 16
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      user:
+        name: user
+        description: 'ID do usuário.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      user_id: 16
+      user: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "status": "success",
+             "message": "Usuário deletado com sucesso!"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+             "message": "This action is unauthorized."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 404
+        content: |-
+          {
+             "status": "error",
+             "message": "Usuário não encontrado!"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

@@ -27,14 +27,14 @@ class UpdateUserRequest extends FormRequest
             'email' => [
                 'sometimes',
                 'email',
-                Rule::unique('users')->ignore($this->user->id),
+                Rule::unique('users')->ignore($this->user?->id),
             ],
             'phone'         => 'sometimes|string|max:15',
             'cpf' => [
             'sometimes',
             'string',
             'size:11',
-            Rule::unique('users')->ignore($this->user->id),
+            Rule::unique('users')->ignore($this->user?->id),
             ],
             'password'      => 'nullable|string|min:6',
 
