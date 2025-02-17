@@ -47,9 +47,8 @@ class UserController extends Controller
         ], 200);
     }
 
-    public function delete(User $user)
+    public function destroy(User $user)
     {
-
         if (!$user) {
             return response()->json([
                 "status" => "error",
