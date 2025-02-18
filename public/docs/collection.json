@@ -10,17 +10,17 @@
     ],
     "info": {
         "name": "API Documentation",
-        "_postman_id": "5dbf0a1d-fda7-4268-84fe-ee65a2130e75",
+        "_postman_id": "1a7183c0-8c81-4816-b67d-81f4d8af5fa0",
         "description": "Documenta\u00e7\u00e3o da API do sistema",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
     "item": [
         {
-            "name": "Autentica\u00e7\u00e3o",
-            "description": "\nAPIs para autentica\u00e7\u00e3o de usu\u00e1rios",
+            "name": "Authentication",
+            "description": "\nAPIs for user authentication",
             "item": [
                 {
-                    "name": "Login do usu\u00e1rio",
+                    "name": "User Login",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -43,7 +43,7 @@
                             "mode": "raw",
                             "raw": "{\"email\":\"user@example.com\",\"password\":\"password123\"}"
                         },
-                        "description": "Retorna um token JWT para autentica\u00e7\u00e3o nas demais rotas",
+                        "description": "Returns a JWT token for authentication in other routes",
                         "auth": {
                             "type": "noauth"
                         }
@@ -58,7 +58,7 @@
                         {
                             "header": [],
                             "code": 401,
-                            "body": "{\n  \"message\": \"Credenciais inv\u00e1lidas\"\n}",
+                            "body": "{\n  \"message\": \"Invalid credentials\"\n}",
                             "name": ""
                         }
                     ]
@@ -81,7 +81,7 @@
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "14",
+                                    "value": "1",
                                     "description": "The ID of the user."
                                 },
                                 {
@@ -105,7 +105,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"street\":\"Rua das Flores\",\"number\":\"123\",\"district\":\"eyacoujouapnprrcnzppprnrw\",\"complement\":\"Apto 45\",\"zip_code\":\"01234-567\",\"neighborhood\":\"Centro\",\"city\":\"S\u00e3o Paulo\",\"state\":\"SP\"}"
+                            "raw": "{\"street\":\"Rua das Flores\",\"number\":\"123\",\"district\":\"eykwop\",\"complement\":\"Apto 45\",\"zip_code\":\"01234-567\",\"neighborhood\":\"Centro\",\"city\":\"S\u00e3o Paulo\",\"state\":\"SP\"}"
                         },
                         "description": "Adiciona um novo endere\u00e7o para um usu\u00e1rio.\nUsu\u00e1rios podem adicionar endere\u00e7os a suas pr\u00f3prias contas.\nAdministradores podem adicionar endere\u00e7os a qualquer usu\u00e1rio."
                     },
@@ -127,11 +127,11 @@
             ]
         },
         {
-            "name": "Gerenciamento de Usu\u00e1rios",
-            "description": "\nAPIs para gerenciar usu\u00e1rios no sistema",
+            "name": "User Management",
+            "description": "\nAPIs for managing users in the system",
             "item": [
                 {
-                    "name": "Criar Usu\u00e1rio",
+                    "name": "Create User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -154,7 +154,7 @@
                             "mode": "raw",
                             "raw": "{\"name\":\"John Doe\",\"email\":\"john@example.com\",\"password\":\"password123\",\"phone\":\"11999999999\",\"cpf\":\"12345678900\"}"
                         },
-                        "description": "Cria um novo usu\u00e1rio no sistema.",
+                        "description": "Creates a new user in the system.",
                         "auth": {
                             "type": "noauth"
                         }
@@ -175,13 +175,13 @@
                         {
                             "header": [],
                             "code": 422,
-                            "body": "{\n   \"message\": \"The given data was invalid.\",\n   \"errors\": {\n       \"email\": [\n           \"O campo email j\u00e1 est\u00e1 sendo utilizado.\"\n       ]\n   }\n}",
+                            "body": "{\n   \"message\": \"The given data was invalid.\",\n   \"errors\": {\n       \"email\": [\n           \"The email field is already in use.\"\n       ]\n   }\n}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "Exibir Usu\u00e1rio",
+                    "name": "Show User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -192,14 +192,14 @@
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "8",
+                                    "value": "1",
                                     "description": "The ID of the user."
                                 },
                                 {
                                     "id": "user",
                                     "key": "user",
                                     "value": "1",
-                                    "description": "ID do usu\u00e1rio."
+                                    "description": "User ID."
                                 }
                             ]
                         },
@@ -215,7 +215,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "Retorna os dados de um usu\u00e1rio espec\u00edfico.",
+                        "description": "Returns the data of a specific user.",
                         "auth": {
                             "type": "noauth"
                         }
@@ -230,13 +230,13 @@
                         {
                             "header": [],
                             "code": 404,
-                            "body": "{\n   \"status\": \"error\",\n   \"message\": \"Usu\u00e1rio n\u00e3o encontrado!\"\n}",
+                            "body": "{\n   \"status\": \"error\",\n   \"message\": \"User not found!\"\n}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "Atualizar Usu\u00e1rio",
+                    "name": "Update User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -247,14 +247,14 @@
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "14",
+                                    "value": "1",
                                     "description": "The ID of the user."
                                 },
                                 {
                                     "id": "user",
                                     "key": "user",
                                     "value": "1",
-                                    "description": "ID do usu\u00e1rio."
+                                    "description": "User ID."
                                 }
                             ]
                         },
@@ -271,9 +271,9 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"John Doe\",\"email\":\"john@example.com\",\"phone\":\"11999999999\",\"cpf\":\"12345678900\",\"password\":\"qT|P|v?s^ul\"}"
+                            "raw": "{\"name\":\"John Doe\",\"email\":\"john@example.com\",\"phone\":\"11999999999\",\"cpf\":\"12345678900\",\"password\":\"'RX^E9\\\\q`3\"}"
                         },
-                        "description": "Atualiza os dados de um usu\u00e1rio existente.",
+                        "description": "Updates the data of an existing user.",
                         "auth": {
                             "type": "noauth"
                         }
@@ -282,7 +282,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n   \"status\": \"success\",\n   \"data\": {\n       \"id\": 1,\n       \"name\": \"John Doe\",\n       \"email\": \"john@example.com\",\n       \"phone\": \"11999999999\",\n       \"cpf\": \"12345678900\",\n       \"created_at\": \"2024-02-17T10:00:00.000000Z\",\n       \"updated_at\": \"2024-02-17T10:00:00.000000Z\",\n       \"address\": {\n           \"id\": 1,\n           \"user_id\": 1,\n           \"street\": \"Rua Exemplo\",\n           \"number\": \"123\",\n           \"complement\": \"Apto 45\",\n           \"neighborhood\": \"Centro\",\n           \"city\": \"S\u00e3o Paulo\",\n           \"state\": \"SP\",\n           \"zipcode\": \"01001000\"\n       }\n   },\n   \"message\": \"Usu\u00e1rio atualizado com sucesso!\"\n}",
+                            "body": "{\n   \"status\": \"success\",\n   \"data\": {\n       \"id\": 1,\n       \"name\": \"John Doe\",\n       \"email\": \"john@example.com\",\n       \"phone\": \"11999999999\",\n       \"cpf\": \"12345678900\",\n       \"created_at\": \"2024-02-17T10:00:00.000000Z\",\n       \"updated_at\": \"2024-02-17T10:00:00.000000Z\",\n       \"address\": {\n           \"id\": 1,\n           \"user_id\": 1,\n           \"street\": \"Example Street\",\n           \"number\": \"123\",\n           \"complement\": \"Apt 45\",\n           \"neighborhood\": \"Downtown\",\n           \"city\": \"S\u00e3o Paulo\",\n           \"state\": \"SP\",\n           \"zipcode\": \"01001000\"\n       }\n   },\n   \"message\": \"User updated successfully!\"\n}",
                             "name": ""
                         },
                         {
@@ -294,13 +294,13 @@
                         {
                             "header": [],
                             "code": 404,
-                            "body": "{\n   \"status\": \"error\",\n   \"message\": \"Usu\u00e1rio n\u00e3o encontrado!\"\n}",
+                            "body": "{\n   \"status\": \"error\",\n   \"message\": \"User not found!\"\n}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "Remover Usu\u00e1rio",
+                    "name": "Remove User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -311,14 +311,14 @@
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "16",
+                                    "value": "1",
                                     "description": "The ID of the user."
                                 },
                                 {
                                     "id": "user",
                                     "key": "user",
                                     "value": "1",
-                                    "description": "ID do usu\u00e1rio."
+                                    "description": "User ID."
                                 }
                             ]
                         },
@@ -334,7 +334,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "Remove um usu\u00e1rio do sistema (soft delete).",
+                        "description": "Removes a user from the system (soft delete).",
                         "auth": {
                             "type": "noauth"
                         }
@@ -343,7 +343,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n   \"status\": \"success\",\n   \"message\": \"Usu\u00e1rio deletado com sucesso!\"\n}",
+                            "body": "{\n   \"status\": \"success\",\n   \"message\": \"User deleted successfully!\"\n}",
                             "name": ""
                         },
                         {
@@ -355,7 +355,7 @@
                         {
                             "header": [],
                             "code": 404,
-                            "body": "{\n   \"status\": \"error\",\n   \"message\": \"Usu\u00e1rio n\u00e3o encontrado!\"\n}",
+                            "body": "{\n   \"status\": \"error\",\n   \"message\": \"User not found!\"\n}",
                             "name": ""
                         }
                     ]

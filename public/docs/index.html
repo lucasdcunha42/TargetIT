@@ -66,13 +66,13 @@
                     <a href="#authenticating-requests">Authenticating requests</a>
                 </li>
                             </ul>
-                    <ul id="tocify-header-autenticacao" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="autenticacao">
-                    <a href="#autenticacao">Autenticação</a>
+                    <ul id="tocify-header-authentication" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
                 </li>
-                                    <ul id="tocify-subheader-autenticacao" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="autenticacao-POSTapi-v1-login">
-                                <a href="#autenticacao-POSTapi-v1-login">Login do usuário</a>
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTapi-v1-login">
+                                <a href="#authentication-POSTapi-v1-login">User Login</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -86,22 +86,22 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-gerenciamento-de-usuarios" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="gerenciamento-de-usuarios">
-                    <a href="#gerenciamento-de-usuarios">Gerenciamento de Usuários</a>
+                    <ul id="tocify-header-user-management" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="user-management">
+                    <a href="#user-management">User Management</a>
                 </li>
-                                    <ul id="tocify-subheader-gerenciamento-de-usuarios" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="gerenciamento-de-usuarios-POSTapi-v1-users">
-                                <a href="#gerenciamento-de-usuarios-POSTapi-v1-users">Criar Usuário</a>
+                                    <ul id="tocify-subheader-user-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="user-management-POSTapi-v1-users">
+                                <a href="#user-management-POSTapi-v1-users">Create User</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="gerenciamento-de-usuarios-GETapi-v1-users--user_id-">
-                                <a href="#gerenciamento-de-usuarios-GETapi-v1-users--user_id-">Exibir Usuário</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-management-GETapi-v1-users--user_id-">
+                                <a href="#user-management-GETapi-v1-users--user_id-">Show User</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="gerenciamento-de-usuarios-PUTapi-v1-users--user_id-">
-                                <a href="#gerenciamento-de-usuarios-PUTapi-v1-users--user_id-">Atualizar Usuário</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-management-PUTapi-v1-users--user_id-">
+                                <a href="#user-management-PUTapi-v1-users--user_id-">Update User</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="gerenciamento-de-usuarios-DELETEapi-v1-users--user_id-">
-                                <a href="#gerenciamento-de-usuarios-DELETEapi-v1-users--user_id-">Remover Usuário</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-management-DELETEapi-v1-users--user_id-">
+                                <a href="#user-management-DELETEapi-v1-users--user_id-">Remove User</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -114,7 +114,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: February 17, 2025</li>
+        <li>Last updated: February 18, 2025</li>
     </ul>
 </div>
 
@@ -133,18 +133,18 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>To authenticate requests, include an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
 <p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
-<p>You can retrieve your token by caling the endpoint <b>/api/v1/login<b>.</p>
+<p>You can retrieve your token by caling the endpoint /api/v1/login</b>.</p>
 
-        <h1 id="autenticacao">Autenticação</h1>
+        <h1 id="authentication">Authentication</h1>
 
-    <p>APIs para autenticação de usuários</p>
+    <p>APIs for user authentication</p>
 
-                                <h2 id="autenticacao-POSTapi-v1-login">Login do usuário</h2>
+                                <h2 id="authentication-POSTapi-v1-login">User Login</h2>
 
 <p>
 </p>
 
-<p>Retorna um token JWT para autenticação nas demais rotas</p>
+<p>Returns a JWT token for authentication in other routes</p>
 
 <span id="example-requests-POSTapi-v1-login">
 <blockquote>Example request:</blockquote>
@@ -203,7 +203,7 @@ fetch(url, {
                 <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Credenciais inv&aacute;lidas&quot;
+    &quot;message&quot;: &quot;Invalid credentials&quot;
 }</code>
  </pre>
     </span>
@@ -286,7 +286,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="user@example.com"
                data-component="body">
     <br>
-<p>Email do usuário. Example: <code>user@example.com</code></p>
+<p>User's email. Example: <code>user@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -297,7 +297,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="password123"
                data-component="body">
     <br>
-<p>Senha do usuário. Example: <code>password123</code></p>
+<p>User's password. Example: <code>password123</code></p>
         </div>
         </form>
 
@@ -321,14 +321,14 @@ Administradores podem adicionar endereços a qualquer usuário.</p>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/v1/users/14/addresses" \
+    "http://localhost/api/v1/users/1/addresses" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"street\": \"Rua das Flores\",
     \"number\": \"123\",
-    \"district\": \"eyacoujouapnprrcnzppprnrw\",
+    \"district\": \"eykwop\",
     \"complement\": \"Apto 45\",
     \"zip_code\": \"01234-567\",
     \"neighborhood\": \"Centro\",
@@ -340,7 +340,7 @@ Administradores podem adicionar endereços a qualquer usuário.</p>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/users/14/addresses"
+    "http://localhost/api/v1/users/1/addresses"
 );
 
 const headers = {
@@ -352,7 +352,7 @@ const headers = {
 let body = {
     "street": "Rua das Flores",
     "number": "123",
-    "district": "eyacoujouapnprrcnzppprnrw",
+    "district": "eykwop",
     "complement": "Apto 45",
     "zip_code": "01234-567",
     "neighborhood": "Centro",
@@ -485,10 +485,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="POSTapi-v1-users--user_id--addresses"
-               value="14"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>14</code></p>
+<p>The ID of the user. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
@@ -530,10 +530,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="district"                data-endpoint="POSTapi-v1-users--user_id--addresses"
-               value="eyacoujouapnprrcnzppprnrw"
+               value="eykwop"
                data-component="body">
     <br>
-<p>Must not be greater than 255 characters. Example: <code>eyacoujouapnprrcnzppprnrw</code></p>
+<p>Must not be greater than 255 characters. Example: <code>eykwop</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>complement</code></b>&nbsp;&nbsp;
@@ -592,16 +592,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                <h1 id="gerenciamento-de-usuarios">Gerenciamento de Usuários</h1>
+                <h1 id="user-management">User Management</h1>
 
-    <p>APIs para gerenciar usuários no sistema</p>
+    <p>APIs for managing users in the system</p>
 
-                                <h2 id="gerenciamento-de-usuarios-POSTapi-v1-users">Criar Usuário</h2>
+                                <h2 id="user-management-POSTapi-v1-users">Create User</h2>
 
 <p>
 </p>
 
-<p>Cria um novo usuário no sistema.</p>
+<p>Creates a new user in the system.</p>
 
 <span id="example-requests-POSTapi-v1-users">
 <blockquote>Example request:</blockquote>
@@ -686,7 +686,7 @@ fetch(url, {
     &quot;message&quot;: &quot;The given data was invalid.&quot;,
     &quot;errors&quot;: {
         &quot;email&quot;: [
-            &quot;O campo email j&aacute; est&aacute; sendo utilizado.&quot;
+            &quot;The email field is already in use.&quot;
         ]
     }
 }</code>
@@ -771,7 +771,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="John Doe"
                data-component="body">
     <br>
-<p>Nome do usuário. Example: <code>John Doe</code></p>
+<p>User's name. Example: <code>John Doe</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -782,7 +782,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="john@example.com"
                data-component="body">
     <br>
-<p>Email do usuário. Example: <code>john@example.com</code></p>
+<p>User's email. Example: <code>john@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -793,7 +793,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="password123"
                data-component="body">
     <br>
-<p>Senha do usuário (mínimo 8 caracteres). Example: <code>password123</code></p>
+<p>User's password (minimum 8 characters). Example: <code>password123</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -804,7 +804,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="11999999999"
                data-component="body">
     <br>
-<p>Telefone do usuário. Example: <code>11999999999</code></p>
+<p>User's phone. Example: <code>11999999999</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>cpf</code></b>&nbsp;&nbsp;
@@ -815,16 +815,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="12345678900"
                data-component="body">
     <br>
-<p>CPF do usuário. Example: <code>12345678900</code></p>
+<p>User's CPF. Example: <code>12345678900</code></p>
         </div>
         </form>
 
-                    <h2 id="gerenciamento-de-usuarios-GETapi-v1-users--user_id-">Exibir Usuário</h2>
+                    <h2 id="user-management-GETapi-v1-users--user_id-">Show User</h2>
 
 <p>
 </p>
 
-<p>Retorna os dados de um usuário específico.</p>
+<p>Returns the data of a specific user.</p>
 
 <span id="example-requests-GETapi-v1-users--user_id-">
 <blockquote>Example request:</blockquote>
@@ -832,14 +832,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/users/8" \
+    --get "http://localhost/api/v1/users/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/users/8"
+    "http://localhost/api/v1/users/1"
 );
 
 const headers = {
@@ -881,7 +881,7 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: &quot;error&quot;,
-    &quot;message&quot;: &quot;Usu&aacute;rio n&atilde;o encontrado!&quot;
+    &quot;message&quot;: &quot;User not found!&quot;
 }</code>
  </pre>
     </span>
@@ -961,10 +961,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="GETapi-v1-users--user_id-"
-               value="8"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>8</code></p>
+<p>The ID of the user. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
@@ -975,16 +975,16 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="url">
     <br>
-<p>ID do usuário. Example: <code>1</code></p>
+<p>User ID. Example: <code>1</code></p>
             </div>
                     </form>
 
-                    <h2 id="gerenciamento-de-usuarios-PUTapi-v1-users--user_id-">Atualizar Usuário</h2>
+                    <h2 id="user-management-PUTapi-v1-users--user_id-">Update User</h2>
 
 <p>
 </p>
 
-<p>Atualiza os dados de um usuário existente.</p>
+<p>Updates the data of an existing user.</p>
 
 <span id="example-requests-PUTapi-v1-users--user_id-">
 <blockquote>Example request:</blockquote>
@@ -992,7 +992,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/v1/users/14" \
+    "http://localhost/api/v1/users/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -1000,14 +1000,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
     \"email\": \"john@example.com\",
     \"phone\": \"11999999999\",
     \"cpf\": \"12345678900\",
-    \"password\": \"qT|P|v?s^ul\"
+    \"password\": \"\'RX^E9\\\\q`3\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/users/14"
+    "http://localhost/api/v1/users/1"
 );
 
 const headers = {
@@ -1020,7 +1020,7 @@ let body = {
     "email": "john@example.com",
     "phone": "11999999999",
     "cpf": "12345678900",
-    "password": "qT|P|v?s^ul"
+    "password": "'RX^E9\\q`3"
 };
 
 fetch(url, {
@@ -1050,16 +1050,16 @@ fetch(url, {
         &quot;address&quot;: {
             &quot;id&quot;: 1,
             &quot;user_id&quot;: 1,
-            &quot;street&quot;: &quot;Rua Exemplo&quot;,
+            &quot;street&quot;: &quot;Example Street&quot;,
             &quot;number&quot;: &quot;123&quot;,
-            &quot;complement&quot;: &quot;Apto 45&quot;,
-            &quot;neighborhood&quot;: &quot;Centro&quot;,
+            &quot;complement&quot;: &quot;Apt 45&quot;,
+            &quot;neighborhood&quot;: &quot;Downtown&quot;,
             &quot;city&quot;: &quot;S&atilde;o Paulo&quot;,
             &quot;state&quot;: &quot;SP&quot;,
             &quot;zipcode&quot;: &quot;01001000&quot;
         }
     },
-    &quot;message&quot;: &quot;Usu&aacute;rio atualizado com sucesso!&quot;
+    &quot;message&quot;: &quot;User updated successfully!&quot;
 }</code>
  </pre>
             <blockquote>
@@ -1078,7 +1078,7 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: &quot;error&quot;,
-    &quot;message&quot;: &quot;Usu&aacute;rio n&atilde;o encontrado!&quot;
+    &quot;message&quot;: &quot;User not found!&quot;
 }</code>
  </pre>
     </span>
@@ -1158,10 +1158,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="PUTapi-v1-users--user_id-"
-               value="14"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>14</code></p>
+<p>The ID of the user. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
@@ -1172,7 +1172,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="url">
     <br>
-<p>ID do usuário. Example: <code>1</code></p>
+<p>User ID. Example: <code>1</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -1184,7 +1184,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="John Doe"
                data-component="body">
     <br>
-<p>optional Nome do usuário. Example: <code>John Doe</code></p>
+<p>optional User's name. Example: <code>John Doe</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -1195,7 +1195,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="john@example.com"
                data-component="body">
     <br>
-<p>optional Email do usuário. Example: <code>john@example.com</code></p>
+<p>optional User's email. Example: <code>john@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
@@ -1206,7 +1206,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="11999999999"
                data-component="body">
     <br>
-<p>optional Telefone do usuário. Example: <code>11999999999</code></p>
+<p>optional User's phone. Example: <code>11999999999</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>cpf</code></b>&nbsp;&nbsp;
@@ -1217,7 +1217,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="12345678900"
                data-component="body">
     <br>
-<p>optional CPF do usuário. Example: <code>12345678900</code></p>
+<p>optional User's CPF. Example: <code>12345678900</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1225,19 +1225,19 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="PUTapi-v1-users--user_id-"
-               value="qT|P|v?s^ul"
+               value="'RX^E9\q`3"
                data-component="body">
     <br>
-<p>Must be at least 6 characters. Example: <code>qT|P|v?s^ul</code></p>
+<p>Must be at least 6 characters. Example: <code>'RX^E9\q</code>3`</p>
         </div>
         </form>
 
-                    <h2 id="gerenciamento-de-usuarios-DELETEapi-v1-users--user_id-">Remover Usuário</h2>
+                    <h2 id="user-management-DELETEapi-v1-users--user_id-">Remove User</h2>
 
 <p>
 </p>
 
-<p>Remove um usuário do sistema (soft delete).</p>
+<p>Removes a user from the system (soft delete).</p>
 
 <span id="example-requests-DELETEapi-v1-users--user_id-">
 <blockquote>Example request:</blockquote>
@@ -1245,14 +1245,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/v1/users/16" \
+    "http://localhost/api/v1/users/1" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/users/16"
+    "http://localhost/api/v1/users/1"
 );
 
 const headers = {
@@ -1275,7 +1275,7 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: &quot;success&quot;,
-    &quot;message&quot;: &quot;Usu&aacute;rio deletado com sucesso!&quot;
+    &quot;message&quot;: &quot;User deleted successfully!&quot;
 }</code>
  </pre>
             <blockquote>
@@ -1294,7 +1294,7 @@ fetch(url, {
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;status&quot;: &quot;error&quot;,
-    &quot;message&quot;: &quot;Usu&aacute;rio n&atilde;o encontrado!&quot;
+    &quot;message&quot;: &quot;User not found!&quot;
 }</code>
  </pre>
     </span>
@@ -1374,10 +1374,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="number" style="display: none"
                step="any"               name="user_id"                data-endpoint="DELETEapi-v1-users--user_id-"
-               value="16"
+               value="1"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>16</code></p>
+<p>The ID of the user. Example: <code>1</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>user</code></b>&nbsp;&nbsp;
@@ -1388,7 +1388,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="1"
                data-component="url">
     <br>
-<p>ID do usuário. Example: <code>1</code></p>
+<p>User ID. Example: <code>1</code></p>
             </div>
                     </form>
 

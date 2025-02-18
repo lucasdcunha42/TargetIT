@@ -30,7 +30,7 @@ endpoints:
         name: user_id
         description: 'The ID of the user.'
         required: true
-        example: 14
+        example: 1
         type: integer
         enumValues: []
         exampleWasSpecified: false
@@ -47,7 +47,7 @@ endpoints:
         nullable: false
         custom: []
     cleanUrlParameters:
-      user_id: 14
+      user_id: 1
       user: 1
     queryParameters: []
     cleanQueryParameters: []
@@ -76,7 +76,7 @@ endpoints:
         name: district
         description: 'Must not be greater than 255 characters.'
         required: true
-        example: eyacoujouapnprrcnzppprnrw
+        example: eykwop
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -135,7 +135,7 @@ endpoints:
     cleanBodyParameters:
       street: 'Rua das Flores'
       number: '123'
-      district: eyacoujouapnprrcnzppprnrw
+      district: eykwop
       complement: 'Apto 45'
       zip_code: 01234-567
       neighborhood: Centro
@@ -175,7 +175,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Z6cD6hb81geVvaP3k4fa5Ed'
+      - 'Bearer 1akga64EdvZhP3bV658ecDf'
     controller: null
     method: null
     route: null

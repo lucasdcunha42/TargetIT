@@ -9,9 +9,9 @@ servers:
 paths:
   /api/v1/login:
     post:
-      summary: 'Login do usuário'
-      operationId: loginDoUsurio
-      description: 'Retorna um token JWT para autenticação nas demais rotas'
+      summary: 'User Login'
+      operationId: userLogin
+      description: 'Returns a JWT token for authentication in other routes'
       parameters: []
       responses:
         200:
@@ -41,13 +41,13 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'Credenciais inválidas'
+                  message: 'Invalid credentials'
                 properties:
                   message:
                     type: string
-                    example: 'Credenciais inválidas'
+                    example: 'Invalid credentials'
       tags:
-        - Autenticação
+        - Authentication
       requestBody:
         required: true
         content:
@@ -57,12 +57,12 @@ paths:
               properties:
                 email:
                   type: string
-                  description: 'Email do usuário.'
+                  description: "User's email."
                   example: user@example.com
                   nullable: false
                 password:
                   type: string
-                  description: 'Senha do usuário.'
+                  description: "User's password."
                   example: password123
                   nullable: false
               required:
@@ -158,7 +158,7 @@ paths:
                 district:
                   type: string
                   description: 'Must not be greater than 255 characters.'
-                  example: eyacoujouapnprrcnzppprnrw
+                  example: eykwop
                   nullable: false
                 complement:
                   type: string
@@ -198,7 +198,7 @@ paths:
         in: path
         name: user_id
         description: 'The ID of the user.'
-        example: 14
+        example: 1
         required: true
         schema:
           type: integer
@@ -212,9 +212,9 @@ paths:
           type: integer
   /api/v1/users:
     post:
-      summary: 'Criar Usuário'
-      operationId: criarUsurio
-      description: 'Cria um novo usuário no sistema.'
+      summary: 'Create User'
+      operationId: createUser
+      description: 'Creates a new user in the system.'
       parameters: []
       responses:
         201:
@@ -287,7 +287,7 @@ paths:
                   message: 'The given data was invalid.'
                   errors:
                     email:
-                      - 'O campo email já está sendo utilizado.'
+                      - 'The email field is already in use.'
                 properties:
                   message:
                     type: string
@@ -298,11 +298,11 @@ paths:
                       email:
                         type: array
                         example:
-                          - 'O campo email já está sendo utilizado.'
+                          - 'The email field is already in use.'
                         items:
                           type: string
       tags:
-        - 'Gerenciamento de Usuários'
+        - 'User Management'
       requestBody:
         required: true
         content:
@@ -312,27 +312,27 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'Nome do usuário.'
+                  description: "User's name."
                   example: 'John Doe'
                   nullable: false
                 email:
                   type: string
-                  description: 'Email do usuário.'
+                  description: "User's email."
                   example: john@example.com
                   nullable: false
                 password:
                   type: string
-                  description: 'Senha do usuário (mínimo 8 caracteres).'
+                  description: "User's password (minimum 8 characters)."
                   example: password123
                   nullable: false
                 phone:
                   type: string
-                  description: 'Telefone do usuário.'
+                  description: "User's phone."
                   example: '11999999999'
                   nullable: false
                 cpf:
                   type: string
-                  description: 'CPF do usuário.'
+                  description: "User's CPF."
                   example: '12345678900'
                   nullable: false
               required:
@@ -344,9 +344,9 @@ paths:
       security: []
   '/api/v1/users/{user_id}':
     get:
-      summary: 'Exibir Usuário'
-      operationId: exibirUsurio
-      description: 'Retorna os dados de um usuário específico.'
+      summary: 'Show User'
+      operationId: showUser
+      description: 'Returns the data of a specific user.'
       parameters: []
       responses:
         200:
@@ -405,21 +405,21 @@ paths:
                 type: object
                 example:
                   status: error
-                  message: 'Usuário não encontrado!'
+                  message: 'User not found!'
                 properties:
                   status:
                     type: string
                     example: error
                   message:
                     type: string
-                    example: 'Usuário não encontrado!'
+                    example: 'User not found!'
       tags:
-        - 'Gerenciamento de Usuários'
+        - 'User Management'
       security: []
     put:
-      summary: 'Atualizar Usuário'
-      operationId: atualizarUsurio
-      description: 'Atualiza os dados de um usuário existente.'
+      summary: 'Update User'
+      operationId: updateUser
+      description: 'Updates the data of an existing user.'
       parameters: []
       responses:
         200:
@@ -441,14 +441,14 @@ paths:
                     address:
                       id: 1
                       user_id: 1
-                      street: 'Rua Exemplo'
+                      street: 'Example Street'
                       number: '123'
-                      complement: 'Apto 45'
-                      neighborhood: Centro
+                      complement: 'Apt 45'
+                      neighborhood: Downtown
                       city: 'São Paulo'
                       state: SP
                       zipcode: '01001000'
-                  message: 'Usuário atualizado com sucesso!'
+                  message: 'User updated successfully!'
                 properties:
                   status:
                     type: string
@@ -488,16 +488,16 @@ paths:
                             example: 1
                           street:
                             type: string
-                            example: 'Rua Exemplo'
+                            example: 'Example Street'
                           number:
                             type: string
                             example: '123'
                           complement:
                             type: string
-                            example: 'Apto 45'
+                            example: 'Apt 45'
                           neighborhood:
                             type: string
-                            example: Centro
+                            example: Downtown
                           city:
                             type: string
                             example: 'São Paulo'
@@ -509,7 +509,7 @@ paths:
                             example: '01001000'
                   message:
                     type: string
-                    example: 'Usuário atualizado com sucesso!'
+                    example: 'User updated successfully!'
         403:
           description: ''
           content:
@@ -530,16 +530,16 @@ paths:
                 type: object
                 example:
                   status: error
-                  message: 'Usuário não encontrado!'
+                  message: 'User not found!'
                 properties:
                   status:
                     type: string
                     example: error
                   message:
                     type: string
-                    example: 'Usuário não encontrado!'
+                    example: 'User not found!'
       tags:
-        - 'Gerenciamento de Usuários'
+        - 'User Management'
       requestBody:
         required: false
         content:
@@ -549,34 +549,34 @@ paths:
               properties:
                 name:
                   type: string
-                  description: 'optional Nome do usuário.'
+                  description: "optional User's name."
                   example: 'John Doe'
                   nullable: false
                 email:
                   type: string
-                  description: 'optional Email do usuário.'
+                  description: "optional User's email."
                   example: john@example.com
                   nullable: false
                 phone:
                   type: string
-                  description: 'optional Telefone do usuário.'
+                  description: "optional User's phone."
                   example: '11999999999'
                   nullable: false
                 cpf:
                   type: string
-                  description: 'optional CPF do usuário.'
+                  description: "optional User's CPF."
                   example: '12345678900'
                   nullable: false
                 password:
                   type: string
                   description: 'Must be at least 6 characters.'
-                  example: 'qT|P|v?s^ul'
+                  example: '''RX^E9\q`3'
                   nullable: true
       security: []
     delete:
-      summary: 'Remover Usuário'
-      operationId: removerUsurio
-      description: 'Remove um usuário do sistema (soft delete).'
+      summary: 'Remove User'
+      operationId: removeUser
+      description: 'Removes a user from the system (soft delete).'
       parameters: []
       responses:
         200:
@@ -587,14 +587,14 @@ paths:
                 type: object
                 example:
                   status: success
-                  message: 'Usuário deletado com sucesso!'
+                  message: 'User deleted successfully!'
                 properties:
                   status:
                     type: string
                     example: success
                   message:
                     type: string
-                    example: 'Usuário deletado com sucesso!'
+                    example: 'User deleted successfully!'
         403:
           description: ''
           content:
@@ -615,44 +615,44 @@ paths:
                 type: object
                 example:
                   status: error
-                  message: 'Usuário não encontrado!'
+                  message: 'User not found!'
                 properties:
                   status:
                     type: string
                     example: error
                   message:
                     type: string
-                    example: 'Usuário não encontrado!'
+                    example: 'User not found!'
       tags:
-        - 'Gerenciamento de Usuários'
+        - 'User Management'
       security: []
     parameters:
       -
         in: path
         name: user_id
         description: 'The ID of the user.'
-        example: 8
+        example: 1
         required: true
         schema:
           type: integer
       -
         in: path
         name: user
-        description: 'ID do usuário.'
+        description: 'User ID.'
         example: 1
         required: true
         schema:
           type: integer
 tags:
   -
-    name: Autenticação
-    description: "\nAPIs para autenticação de usuários"
+    name: Authentication
+    description: "\nAPIs for user authentication"
   -
     name: Endereços
     description: "\nAPIs para gerenciamento de endereços dos usuários"
   -
-    name: 'Gerenciamento de Usuários'
-    description: "\nAPIs para gerenciar usuários no sistema"
+    name: 'User Management'
+    description: "\nAPIs for managing users in the system"
 components:
   securitySchemes:
     default:
